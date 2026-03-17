@@ -1,0 +1,25 @@
+// method 1 : Time Complexity -O nlog(n)
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length/2];
+    }
+}
+
+
+// method 2:
+class Solution {
+    public int majorityElement(int[] nums) {
+        int candidate=0;
+int count = 0;
+if(count==0){
+candidate =num;
+}if(num==candidate){
+count++;
+
+}else{
+count--;
+}
+
+    }
+}
