@@ -1,0 +1,32 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int low =1;// it is low speed it means 1 pile can definitely be eat 
+        int high=0;
+        for(int pile:piles){ // check each pile and high speed 
+            high=Math.max(high,pile);
+
+        }int ans =high;
+        while(low<=high){// aply binary search 
+            int middle = low + (high-low)/2;
+            if(canFinish(piles,h,middle)){
+                 ans = middle;
+                high=middle-1;
+
+            }else{
+                low=middle+1;
+            }
+
+        }
+        return ans;
+
+    }
+     private boolean canFinish(int[] piles, int h, int k) {
+        int totalHours = 0;
+
+        for (int pile : piles) {
+            totalHours += (pile + k - 1) / k;
+        }
+
+        return totalHours <= h;
+    }
+}
