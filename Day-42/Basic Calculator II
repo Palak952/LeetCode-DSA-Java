@@ -1,0 +1,44 @@
+class Solution {
+    public int calculate(String s) {
+        int num = 0;
+        int lastNum = 0;
+        int result = 0;
+        char sign = '+';
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            // number build for example "1234"->1,12,123,1234
+            if (Character.isDigit(ch)) {
+                num = num * 10 + (ch - '0');
+            }
+
+            // operator or last char then
+            if ((!Character.isDigit(ch) && ch != ' ') || i == s.length() - 1) {
+
+                if (sign == '+') {
+                    result += lastNum;
+                    lastNum = num;
+                } 
+                else if (sign == '-') {
+                    result += lastNum;
+                    lastNum = -num;
+                } 
+                else if (sign == '*') {
+                    lastNum = lastNum * num;
+                } 
+                else if (sign == '/') {
+                    lastNum = lastNum / num;
+                }
+
+                sign = ch;
+                num = 0;
+            }
+        }
+
+        //add lastnumber
+        result += lastNum;
+
+        return result;
+    }
+}
