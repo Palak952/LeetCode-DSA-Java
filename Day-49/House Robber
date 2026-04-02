@@ -1,0 +1,14 @@
+class Solution {
+    public int rob(int[] nums) {
+        int prev = 0;// it means curr house dont use dp[n-1]
+        int prev2=0;// it means curr ko bhi liya dp[n-2]
+        for(int i:nums){
+            int curr=Math.max(prev,prev2+i);
+            prev2=prev;
+            prev=curr;
+
+        }
+        return prev;
+
+    }
+}
